@@ -1,2 +1,2 @@
-# Angular Getting Started
- A repository for the course Angular: Getting Started by Deborah Kurata on PluralSight
+# Angular Fundamentals
+ A repository for the course Angular: Fundamentals by Joe and Jim Cooper on PluralSight
