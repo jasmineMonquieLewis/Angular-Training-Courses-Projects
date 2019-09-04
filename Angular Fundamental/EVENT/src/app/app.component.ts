@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'event-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent {
-  title = 'EVENT';
+export class AppComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() { }
 }
