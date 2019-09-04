@@ -1,28 +1,24 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'event-list',
-  templateUrl: './events-list.component.html',
-  styleUrls: ['./events-list.component.css']
+  selector: "events-list",
+  templateUrl: "./events-list.component.html",
+  styleUrls: ["./events-list.component.css"]
 })
 export class EventsListComponent {
   event1 = {
     id: 1,
-    name: 'Angular Connect',
-    date: '9/26/2036',
-    time: '10:00 am',
+    name: "Angular Connect",
+    date: "9/26/2036",
+    time: "10:00 am",
     price: 599.99,
-    image: '/assets/images/angularconnect-shield.png',
+    image: "/assets/images/angularconnect-shield.png",
     location: {
-      address: '1057 DT',
-      city: 'London',
-      country: 'England'
+      address: "1057 DT",
+      city: "London",
+      country: "England"
     }
-  }
+  };
 
-  constructor() { }
-
-  handleEventClicked(data: any) {
-    console.log('received', data);
-  }
+  constructor() {}
 }
