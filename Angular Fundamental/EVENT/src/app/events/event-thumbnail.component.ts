@@ -15,14 +15,14 @@ export class EventThumbnailComponent implements OnInit {
   ngOnInit() { }
 
   getTimeClass(time): any {
-    const isEarlyStart = this.event && this.event.time === '8:00 am';
-    const isLatStart = this.event && this.event.time === '10:00 am';
+    const IS_EARLY_START = this.event && this.event.time === '8:00 am';
+    const IS_LATE_START = this.event && this.event.time === '10:00 am';
 
     switch (time) {
       case '8:00 am':
-        return { green: isEarlyStart, bold: isEarlyStart };
+        return { green: IS_EARLY_START, bold: IS_EARLY_START };
       case '10:00 am':
-        return { red: isLatStart };
+        return { red: IS_LATE_START };
       default:
         return {};
     }
