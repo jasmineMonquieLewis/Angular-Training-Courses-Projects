@@ -18,11 +18,8 @@
   <div *ngIf="event?.price">
     Price: ${{ event?.price }}
   </div>
-  <div [hidden]="!event?.location">
-    <span>Building: {{ event?.location?.address }}</span>
-  </div>
-  <div [hidden]="!event?.location">
-    <span>Location: {{ event?.location?.city }},
-      {{ event?.location?.country }}</span>
+  <div *ngIf="event?.location">
+    Address: {{event?.location?.address}}<br />
+    Location: {{event?.location?.city}}, {{event?.location?.country}}
   </div>
 </div>
