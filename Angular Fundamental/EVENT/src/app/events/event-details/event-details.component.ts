@@ -8,23 +8,15 @@ import { ActivatedRoute } from '@angular/router'; //allows to route to a page wi
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
-  event: any;
+  public event: any;
 
   constructor(
     @Inject(EventService) private eventService: EventService,
-    private route: ActivatedRoute) { }
-
-  ngOnInit() {
-    this.event = this.eventService.getEvent(1);
-    // this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
-    //route is used in the constructor so we do not have to declare a class property
-    //+ casts to a number
-
-
-    //let id: number | string;
-    // let id = this.route.snapshot.paramMap.get('id');
-    // this.eventService.getEvent(id).
-    //   subscribe(event => this.event = event);
+    @Inject(ActivatedRoute) private route: ActivatedRoute
+  ) {
   }
 
+  ngOnInit() {
+    this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
+  }
 }

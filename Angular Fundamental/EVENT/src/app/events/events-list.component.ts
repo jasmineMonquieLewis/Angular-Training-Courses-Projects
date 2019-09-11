@@ -7,10 +7,11 @@ import { EventService } from './shared/event.service';
   styleUrls: ["./events-list.component.css"]
 })
 export class EventsListComponent implements OnInit {
-  events: any[];
+  public events: any[];
 
-  constructor(@Inject(EventService) private eventService: EventService) {
-
+  constructor(
+    @Inject(EventService) private eventService: EventService
+  ) {
   }
 
   ngOnInit() {

@@ -14,7 +14,7 @@ export class EventThumbnailComponent implements OnInit {
 
   ngOnInit() { }
 
-  getTimeClass(time): any {
+  public getTimeClass(time): any {
     const IS_EARLY_START = this.event && this.event.time === '8:00 am';
     const IS_LATE_START = this.event && this.event.time === '10:00 am';
 

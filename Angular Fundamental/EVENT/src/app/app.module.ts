@@ -10,6 +10,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { EventService } from './events/shared/event.service';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { AppRoutes } from './app.routes';
+import { CreateEventComponent } from './events/create-event.component';
+import { Error404Component } from './errors/error404.component';
+import { EventRouteActivatorService } from './events/event-details/event-route-activator.service';
 
 @NgModule({
   imports: [
@@ -21,9 +24,22 @@ import { AppRoutes } from './app.routes';
     EventsListComponent,
     EventThumbnailComponent,
     NavbarComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    CreateEventComponent,
+    Error404Component
   ],
-  providers: [EventService],
+  providers: [
+    EventService,
+    EventRouteActivatorService,
+    {
+      provide: 'canDeactivateCreateEvent',
+      useValue: checkDirtyState
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function checkDirtyState() {
+  return false;
+}
