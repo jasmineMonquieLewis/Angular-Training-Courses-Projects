@@ -2,17 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import {
+  EventsListComponent,
+  EventThumbnailComponent,
+  EventService,
+  EventDetailsComponent,
+  CreateEventComponent,
+  EventRouteActivatorService,
+  EventListResolver
+} from './events/index';
 
 import { AppComponent } from './app.component';
-import { EventsListComponent } from './events/events-list.component';
-import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { EventService } from './events/shared/event.service';
-import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { AppRoutes } from './app.routes';
-import { CreateEventComponent } from './events/create-event.component';
 import { Error404Component } from './errors/error404.component';
-import { EventRouteActivatorService } from './events/event-details/event-route-activator.service';
 
 @NgModule({
   imports: [
@@ -26,11 +29,12 @@ import { EventRouteActivatorService } from './events/event-details/event-route-a
     NavbarComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    Error404Component
+    Error404Component,
   ],
   providers: [
     EventService,
     EventRouteActivatorService,
+    EventListResolver,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
@@ -40,6 +44,9 @@ import { EventRouteActivatorService } from './events/event-details/event-route-a
 })
 export class AppModule { }
 
-export function checkDirtyState() {
-  return false;
+export function checkDirtyState(component: CreateEventComponent): boolean {
+  if (component.isDirty) {
+    return window.confirm('You have not saved this event, do you really want to cancel?');
+  }
+  return true;
 }

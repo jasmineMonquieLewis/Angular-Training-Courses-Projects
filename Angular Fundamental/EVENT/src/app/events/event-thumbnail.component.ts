@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { getRenderedText } from '@angular/core/src/render3';
 
 @Component({
   selector: "event-thumbnail",
@@ -27,9 +26,4 @@ export class EventThumbnailComponent implements OnInit {
         return {};
     }
   }
-
-  // getStartTimeClass(): any {
-  //   const isEarlyStart = this.event && this.event.time === '8:00 am';
-  //   return { green: isEarlyStart, bold: isEarlyStart };
-  // }
 }
