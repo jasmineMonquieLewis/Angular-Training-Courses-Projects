@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from '@angular/core';
+import { IEvent } from './shared/index';
 
 @Component({
   selector: "event-thumbnail",
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from "@angular/core";
   styleUrls: ["./event-thumbnail.component.css"]
 })
 export class EventThumbnailComponent implements OnInit {
-  @Input() event: any;
+  @Input() event: IEvent;
   //@Output() eventClick = new EventEmitter(); //tells our parent componenet there was a cick/event
 
   constructor() { }

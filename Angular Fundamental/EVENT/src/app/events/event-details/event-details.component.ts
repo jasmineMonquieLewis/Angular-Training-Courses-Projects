@@ -1,13 +1,14 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { EventService } from '../shared/event.service';
 import { ActivatedRoute } from '@angular/router'; //allows to route to a page with a paramater passed in 'localhost:4200/events/4'
+import { IEvent } from '../shared/index';
 
 @Component({
   templateUrl: './event-details.component.html',
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
-  public event: any;
+  public event: IEvent;
 
   constructor(
     @Inject(EventService) private eventService: EventService,
