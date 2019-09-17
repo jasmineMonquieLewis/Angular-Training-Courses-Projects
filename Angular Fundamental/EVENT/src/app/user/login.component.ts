@@ -8,11 +8,14 @@ import { AuthService } from './auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  public mouseOverLogin: boolean;
+  public password: string;
+  public userName: string;
+
 
   constructor(
     @Inject(AuthService) private authService: AuthService,
     @Inject(Router) private router: Router
-
   ) { }
 
   ngOnInit() {
