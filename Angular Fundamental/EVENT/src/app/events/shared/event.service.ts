@@ -16,6 +16,13 @@ export class EventService {
     setTimeout(() => { subject.next(EVENTS); subject.complete(); }, 100);
     return subject;
   }
+
+  public saveEvent(event): void {
+    event.id = 999;
+    event.session = [];
+    EVENTS.push(event);
+  }
+
 }
 
 const EVENTS: IEvent[] = [
