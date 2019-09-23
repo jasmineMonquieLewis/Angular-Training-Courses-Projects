@@ -26,3 +26,15 @@
     </div>
   </div>
 </div>
+
+
+
+<div class="row">
+  <div class="col-md-4">
+    <h3><a (click)="addSession()">Create Session</a></h3>
+  </div>
+</div>
+
+<session-list *ngIf="!addMode" [sessions]="event?.sessions"></session-list>
+<create-session *ngIf="addMode" (saveNewSession)="saveNewSession($event)" (cancelAddSession)="cancelAddSession()">
+</create-session>
