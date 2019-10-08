@@ -19,14 +19,18 @@ export class CreateSessionComponent implements OnInit {
   public level: FormControl;
   public abstract: FormControl;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.name = new FormControl('', Validators.required);
     this.presenter = new FormControl('', Validators.required);
     this.duration = new FormControl('', Validators.required);
     this.level = new FormControl('', Validators.required);
-    this.abstract = new FormControl('', [Validators.required, Validators.maxLength(400), restrictedWords(['foo', 'bar'])]);
+    this.abstract = new FormControl('', [
+      Validators.required,
+      Validators.maxLength(400),
+      restrictedWords(['foo', 'bar'])
+    ]);
 
     this.newSessionForm = new FormGroup({
       name: this.name,
@@ -46,7 +50,7 @@ export class CreateSessionComponent implements OnInit {
       presenter: formValues.presenter,
       abstract: formValues.abstract,
       voters: []
-    }
+    };
     this.saveNewSession.emit(session);
   }
 
