@@ -8,13 +8,25 @@ import { IEvent, ISession } from '../shared/index';
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
-  public event: IEvent;
   public addMode: boolean;
+  public event: IEvent;
+  public filterBy: string = 'all';
+  public sortBy: string = 'votes';
+
+  //filters
+  public allFilter: string = 'all';
+  public beginnerFilter: string = 'beginner';
+  public intermediateFilter: string = 'intermediate';
+  public advancedFilter: string = 'advanced';
+
+  //sorts
+  public nameSort: string = 'name';
+  public voteSort: string = 'votes';
 
   constructor(
     @Inject(EventService) private eventService: EventService,
     @Inject(ActivatedRoute) private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
@@ -22,6 +34,10 @@ export class EventDetailsComponent implements OnInit {
 
   public addSession(): void {
     this.addMode = true;
+  }
+
+  public cancelAddSession(): void {
+    this.addMode = false;
   }
 
   public saveNewSession(session: ISession): void {
@@ -33,10 +49,6 @@ export class EventDetailsComponent implements OnInit {
 
     this.event.sessions.push(session);
     this.eventService.updateEvent(this.event);
-    this.addMode = false;
-  }
-
-  public cancelAddSession(): void {
     this.addMode = false;
   }
 }

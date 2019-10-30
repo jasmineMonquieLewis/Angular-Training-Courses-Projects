@@ -33,7 +33,66 @@
   </div>
 </div>
 
-<session-list *ngIf="!addMode" [sessions]="event?.sessions"></session-list>
+<h1>Sessions</h1>
+<hr />
+
+<div class="row" style="margin-bottom: 10px;">
+  <div class="btn-group btn-group-md">
+    <div class="col-sm-6">
+      <button class="btn btn-default" [class.active]="sortBy === nameSort" (click)="sortBy = 'name'">
+        By Name
+      </button>
+    </div>
+
+    <div class="col-sm-2">
+      <button class="btn btn-default" [class.active]="sortBy === voteSort" (click)="sortBy = 'votes'">
+        By Votes
+      </button>
+    </div>
+  </div>
+
+  <div class="btn-group btn-group-md" style="margin-left: 160px;">
+    <div class="col-sm-2">
+      <button class="btn btn-default" [class.active]="filterBy === allFilter" (click)="filterBy = 'all'">
+        All
+      </button>
+    </div>
+    <div class="col-sm-3">
+      <button
+        class="btn btn-default"
+        [class.active]="filterBy === beginnerFilter"
+        (click)="filterBy = 'beginner'"
+      >
+        Beginner
+      </button>
+    </div>
+    <div class="col-sm-4">
+      <button
+        class="btn btn-default"
+        [class.active]="filterBy === intermediateFilter"
+        (click)="filterBy = 'intermediate'"
+      >
+        Intermediate
+      </button>
+    </div>
+    <div class="col-sm-1">
+      <button
+        class="btn btn-default"
+        [class.active]="filterBy === advancedFilter"
+        (click)="filterBy = 'advanced'"
+      >
+        Advanced
+      </button>
+    </div>
+  </div>
+</div>
+
+<session-list
+  [filterBy]="filterBy"
+  [sortBy]="sortBy"
+  *ngIf="!addMode"
+  [sessions]="event?.sessions"
+></session-list>
 <create-session
   *ngIf="addMode"
   (saveNewSession)="saveNewSession($event)"
