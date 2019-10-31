@@ -1,5 +1,6 @@
 # APM
 
+APM is an inventory application.
 
 
 ## Development server
