@@ -15,13 +15,21 @@ import {
   DurationPipe
 } from './events/index';
 
+import {
+  JQ_TOKEN,
+  CollapsibleWellComponent,
+  SimpleModalComponent,
+  ModalTriggerDirective
+} from './common/index';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutes } from './app.routes';
 import { Error404Component } from './errors/error404.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CollapsibleWellComponent } from './common/collapsible-well.component';
+
+let jQuery = window['$'];
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(AppRoutes)],
@@ -36,7 +44,9 @@ import { CollapsibleWellComponent } from './common/collapsible-well.component';
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   providers: [
     EventService,
@@ -46,6 +56,10 @@ import { CollapsibleWellComponent } from './common/collapsible-well.component';
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
+    },
+    {
+      provide: JQ_TOKEN,
+      useValue: jQuery
     }
   ],
   bootstrap: [AppComponent]
