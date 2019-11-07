@@ -5,15 +5,15 @@ import { IUser } from './user.model';
 export class AuthService {
   public currentUser: IUser;
 
-  constructor() { }
+  constructor() {}
 
   public loginUser(userName: string, password: string): void {
     this.currentUser = {
-      id: 1,
+      id: Math.random(),
       userName: userName,
-      firstName: 'Jasmine Monquie',
-      lastName: 'Lewis'
-    }
+      firstName: userName,
+      lastName: userName
+    };
   }
 
   public isAuthenticated(): boolean {
